@@ -29,8 +29,6 @@ excludes<-c('Alexander 1992','Begier 2008','Brown 1987','Charoenca 1995','Dwight
 #remove the 7 excluded studies
 metadata_2018<-metadata_2018[!metadata_2018$studyid%in%excludes,]
 
-#check number of studies (should be 20 - 19 reported in paper but this was an error)
-length(unique(metadata_2018$studyid))
 
 #calc standard deviation of ORs
 metadata_2018$or_se<-(metadata_2018$uor-metadata_2018$lor)/3.92
@@ -98,6 +96,9 @@ levels(metadata_2018$symptom_simplified)
 tapply(metadata_2018$symptom_simplified,
        metadata_2018$healthoutcomecategory,
        function(x){print(unique(x))})
+
+#check number of studies (should be 19 as reported in paper)
+length(unique(metadata_2018$studyid))
 
 # STUDY-LEVEL EFFECTS (FOREST PLOT) -------------------------------------------------------------
 
